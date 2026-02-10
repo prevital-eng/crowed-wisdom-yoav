@@ -605,7 +605,7 @@
                     }
 
                     alert("✅ הפורום נוצר בהצלחה!");
-                    await logForumActivity('forum_created', forumFormData.category, forumFormData.title, forumFormData.content);
+                    await logForumActivity('forum_created', '', forumFormData.title, forumFormData.category + ': ' + forumFormData.content.substring(0, 100));
                     setForumFormData({ title: '', content: '', category: '' });
                     await loadForums();
                     setStep('forums');
@@ -645,7 +645,8 @@
                         throw new Error('שגיאה בשליחת התגובה');
                     }
 
-                    await logForumActivity('forum_reply', forumId, '', replyContent.substring(0, 100));
+                    const forum = forums.find(f => f.id === forumId);
+                    await logForumActivity('forum_reply', forumId, forum ? forum.title : '', replyContent.substring(0, 100));
                     setReplyContent('');
                     await loadForumReplies(forumId);
                     await loadForums();
