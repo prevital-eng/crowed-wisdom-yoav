@@ -424,6 +424,31 @@
                 }
             };
 
+            const logForumActivity = async (activityType, details) => {
+                if (!currentUser) return;
+                
+                try {
+                    const activityData = {
+                        action: 'logActivity',
+                        menteePhone: currentUser.phone,
+                        menteeName: `${currentUser.firstName} ${currentUser.lastName}`,
+                        mentorPhone: '',
+                        mentorName: '',
+                        contactMethod: activityType,
+                        helpTopics: details,
+                        timestamp: new Date().toISOString()
+                    };
+
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: JSON.stringify(activityData)
+                    });
+                } catch (err) {
+                    console.error("שגיאה ברישום פעילות פורום:", err);
+                }
+            };
+
             const handleLogin = () => {
                 setError('');
                 const cleanInput = loginPhone.replace(/\D/g, '');
@@ -577,6 +602,7 @@
                     }
 
                     alert("✅ הפורום נוצר בהצלחה!");
+                    await logForumActivity('forum_create', `יצירת פורום: ${forumFormData.title}`);
                     setForumFormData({ title: '', content: '', category: '' });
                     await loadForums();
                     setStep('forums');
@@ -617,6 +643,7 @@
                     }
 
                     setReplyContent('');
+                    await logForumActivity('forum_reply', `תגובה בפורום: ${forumId}`);
                     await loadForumReplies(forumId);
                     await loadForums();
                 } catch (err) {
@@ -650,6 +677,7 @@
                     }
 
                     alert("✅ הפורום נסגר והועבר לארכיון");
+                    await logForumActivity('forum_close', `סגירת פורום: ${forumId}`);
                     await loadForums();
                     setSelectedForum(null);
                     setStep('forums');
@@ -684,6 +712,7 @@
                     }
 
                     alert("✅ הפורום נמחק בהצלחה");
+                    await logForumActivity('forum_delete', `מחיקת פורום: ${forumId}`);
                     await loadForums();
                     setSelectedForum(null);
                     setStep('forums');
@@ -717,6 +746,7 @@
                         throw new Error('שגיאה במחיקת התגובה');
                     }
 
+                    await logForumActivity('forum_delete_reply', `מחיקת תגובה: ${replyId}`);
                     await loadForumReplies(forumId);
                     await loadForums();
                 } catch (err) {
@@ -1161,17 +1191,16 @@
                                             type="text" 
                                             className="w-full p-3 border-2 rounded-xl focus:border-blue-400 outline-none transition" 
                                             placeholder="לדוגמה: יוסי כהן"
-                                            value={`${formData.firstName || ''} ${formData.lastName || ''}`.trim()} 
+                                            value={`${formData.firstName || ''}${formData.lastName ? ' ' + formData.lastName : (formData._hasTrailingSpace ? ' ' : '')}`} 
                                             onChange={e => {
                                                 const fullName = e.target.value;
-                                                // תמיכה ברווחים מרובים ובשמות מורכבים
-                                                const cleanName = fullName.replace(/\s+/g, ' ').trim();
-                                                const nameParts = cleanName.split(' ');
+                                                // תמיכה ברווחים ובשמות מורכבים - לא לחתוך רווחים בזמן הקלדה
+                                                const cleanName = fullName.replace(/\s+/g, ' ');
+                                                const hasTrailingSpace = cleanName.endsWith(' ');
+                                                const nameParts = cleanName.trim().split(' ');
                                                 const firstName = nameParts[0] || '';
                                                 const lastName = nameParts.slice(1).join(' ') || '';
-                                                console.log('Full name changed:', cleanName);
-                                                console.log('Split to:', {firstName, lastName});
-                                                setFormData({...formData, firstName, lastName});
+                                                setFormData({...formData, firstName, lastName, _hasTrailingSpace: hasTrailingSpace && !lastName});
                                             }} 
                                         />
                                     </div>
