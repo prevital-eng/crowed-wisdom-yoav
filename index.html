@@ -444,8 +444,6 @@
                         headers: { 'Content-Type': 'text/plain' },
                         body: JSON.stringify(activityData)
                     });
-
-                    await loadActivities();
                 } catch (err) {
                     console.error("שגיאה ברישום פעילות פורום:", err);
                 }
@@ -649,7 +647,7 @@
                     }
 
                     const forumTitle = selectedForum ? selectedForum.title : '';
-                    await logForumActivity('forum_reply', forumId, forumTitle, replyContent.substring(0, 100));
+                    await logForumActivity('forum_reply', forumId, forumTitle, (replyContent || '').substring(0, 100));
 
                     setReplyContent('');
                     await loadForumReplies(forumId);
