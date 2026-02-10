@@ -307,6 +307,7 @@
                     if (savedUser) {
                         const user = JSON.parse(savedUser);
                         setCurrentUser(user);
+                        setFormData(user);
                         setStep('dashboard');
                         
                         // הצגת מסר ברוכה שובה
@@ -422,6 +423,32 @@
                     await loadActivities();
                 } catch (err) {
                     console.error("שגיאה ברישום פעילות:", err);
+                }
+            };
+
+            const logForumActivity = async (activityType, forumId, forumTitle, details) => {
+                if (!currentUser) return;
+                
+                try {
+                    const activityData = {
+                        action: 'logForumActivity',
+                        userPhone: currentUser.phone,
+                        userName: `${currentUser.firstName} ${currentUser.lastName}`,
+                        userRole: currentUser.role,
+                        activityType: activityType,
+                        forumId: forumId,
+                        forumTitle: forumTitle,
+                        details: details,
+                        timestamp: new Date().toISOString()
+                    };
+
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: JSON.stringify(activityData)
+                    });
+                } catch (err) {
+                    console.error("שגיאה ברישום פעילות פורום:", err);
                 }
             };
 
@@ -578,6 +605,7 @@
                     }
 
                     alert("✅ הפורום נוצר בהצלחה!");
+                    await logForumActivity('forum_created', forumFormData.category, forumFormData.title, forumFormData.content);
                     setForumFormData({ title: '', content: '', category: '' });
                     await loadForums();
                     setStep('forums');
@@ -617,6 +645,7 @@
                         throw new Error('שגיאה בשליחת התגובה');
                     }
 
+                    await logForumActivity('forum_reply', forumId, '', replyContent.substring(0, 100));
                     setReplyContent('');
                     await loadForumReplies(forumId);
                     await loadForums();
