@@ -1,69 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <link rel="stylesheet" href="style.css"> <!-- Add your styles here -->
+    <title>הרשמה | חכמת ההמונים ביואב</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Assistant', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; margin: 0; padding: 20px; }
+        .form-container { max-width: 600px; margin: 0 auto; background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .form-container h1 { text-align: center; color: #1e293b; margin-bottom: 0.5rem; }
+        .form-container p.subtitle { text-align: center; color: #64748b; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-weight: 700; color: #334155; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 0.75rem; font-size: 1rem; font-family: 'Assistant', sans-serif; box-sizing: border-box; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #3b82f6; outline: none; }
+        .mandatory { color: #ef4444; }
+        .btn-submit { width: 100%; padding: 0.75rem; background: linear-gradient(135deg, #3b82f6, #6366f1); color: white; border: none; border-radius: 0.75rem; font-size: 1.1rem; font-weight: 700; cursor: pointer; font-family: 'Assistant', sans-serif; }
+        .btn-submit:hover { opacity: 0.9; }
+        .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+        .error-msg { color: #ef4444; text-align: center; margin-bottom: 1rem; font-weight: 600; }
+        .success-msg { color: #10b981; text-align: center; margin-bottom: 1rem; font-weight: 600; }
+        .back-link { display: inline-block; color: white; text-decoration: none; margin-bottom: 1rem; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Logo" /> <!-- Replace with your logo -->
-        <h1>Registration Form</h1>
-    </header>
-    <form id="registrationForm">
-        <div>
-            <label for="role">I am a:</label>
-            <select id="role" name="role" required>
-                <option value="mentor">Mentor</option>
-                <option value="student">Student</option>
-            </select>
+    <div style="max-width: 600px; margin: 0 auto;">
+        <a href="../index.html" class="back-link">← חזרה לדף הראשי</a>
+        <div class="form-container">
+            <img src="../assets/logo.svg" alt="Logo" style="display: block; margin: 0 auto 1rem; max-width: 120px;" />
+            <h1>הרשמה לקהילה</h1>
+            <p class="subtitle">חכמת ההמונים ביואב</p>
+
+            <div id="errorMsg" class="error-msg" style="display:none;"></div>
+            <div id="successMsg" class="success-msg" style="display:none;"></div>
+
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="role">אני: <span class="mandatory">*</span></label>
+                    <select id="role" name="role" required>
+                        <option value="mentor">🎓 מנטור</option>
+                        <option value="mentee">🌱 חניך</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">שם פרטי <span class="mandatory">*</span></label>
+                    <input type="text" id="firstName" name="firstName" placeholder="לדוגמה: יוסי" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">שם משפחה</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="לדוגמה: כהן">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">טלפון <span class="mandatory">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="0501234567" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">אימייל</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">עיר מגורים</label>
+                    <input type="text" id="location" name="location" placeholder="לדוגמה: תל אביב">
+                </div>
+
+                <div class="form-group">
+                    <label for="selectedFields">תחומים <span class="mandatory">*</span></label>
+                    <input type="text" id="selectedFields" name="selectedFields" placeholder="לדוגמה: מתמטיקה, תכנות, אנגלית" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">ספר/י על עצמך</label>
+                    <textarea id="bio" name="bio" rows="3" placeholder="תיאור קצר על עצמך..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">הרשמה</button>
+            </form>
         </div>
-        
-        <div>
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
-        </div>
-        
-        <div>
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
-        </div>
-        
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required>
-        </div>
-        
-        <div>
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required>
-        </div>
-        
-        <div>
-            <label for="subjects">Subjects:</label>
-            <input type="text" id="subjects" name="subjects" required>
-        </div>
-        
-        <div>
-            <label for="about">About:</label>
-            <textarea id="about" name="about" required></textarea>
-        </div>
-        
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        
-        <button type="submit">Register</button>
-    </form>
+    </div>
+
     <script>
-        // JavaScript code for Google Sheets integration goes here
+        // Google Sheets integration via the same Apps Script used by the main app
+        // Data file: https://docs.google.com/spreadsheets/d/19GA5QW9FUFGJzbEZfhA13BkzKl-Dpc64FV40kVVypkE/edit?gid=144295022#gid=144295022
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw4ZEjxTvZj08b9EV7xrL1gFbNz_5dk04Oc0vC4lsT5gzjVUVZoXmHChM5IRnyP68EM/exec";
+
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const errorMsg = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+            const submitBtn = document.getElementById('submitBtn');
+
+            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+
+            const firstName = document.getElementById('firstName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const selectedFields = document.getElementById('selectedFields').value.trim();
+
+            if (!firstName || !phone) {
+                errorMsg.textContent = 'אנא מלא את כל השדות החובה (שם ומספר טלפון)';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            if (!selectedFields) {
+                errorMsg.textContent = 'אנא הזן לפחות תחום אחד';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'שולח...';
+
+            try {
+                const dataToSend = {
+                    action: 'saveUser',
+                    firstName: firstName,
+                    lastName: document.getElementById('lastName').value.trim() || '',
+                    location: document.getElementById('location').value.trim() || '',
+                    bio: document.getElementById('bio').value.trim() || '',
+                    phone: phone,
+                    email: document.getElementById('email').value.trim() || '',
+                    role: document.getElementById('role').value,
+                    selectedFields: selectedFields,
+                    timestamp: new Date().toISOString()
+                };
+
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(dataToSend)
+                });
+
+                if (!response.ok) {
+                    throw new Error('שגיאה בשמירת הנתונים');
+                }
+
+                successMsg.textContent = '✅ הפרטים נשלחו בהצלחה! תודה שהצטרפת לקהילה.';
+                successMsg.style.display = 'block';
+                document.getElementById('registrationForm').reset();
+            } catch (err) {
+                console.error('שגיאה בשמירה:', err);
+                errorMsg.textContent = 'אירעה שגיאה בשמירת הנתונים. אנא נסה שנית.';
+                errorMsg.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'הרשמה';
+            }
+        });
     </script>
 </body>
 </html>
