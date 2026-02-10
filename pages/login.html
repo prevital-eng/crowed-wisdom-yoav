@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>הרשמה - חכמת ההמונים ביואב</title>
+    <title>כניסה - חכמת ההמונים ביואב</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <style>
@@ -28,8 +28,8 @@
             margin: 10px 0 0 0;
         }
         .form-container {
-            max-width: 500px;
-            margin: 30px auto;
+            max-width: 400px;
+            margin: 50px auto;
             padding: 30px;
             background-color: white;
             border-radius: 10px;
@@ -49,9 +49,7 @@
             font-weight: bold;
             color: #333;
         }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group input {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -59,13 +57,7 @@
             font-size: 16px;
             box-sizing: border-box;
         }
-        .form-group textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-group input:focus {
             outline: none;
             border-color: #48bb78;
         }
@@ -93,11 +85,11 @@
         .back-link:hover {
             color: #2c5282;
         }
-        .login-link {
+        .register-link {
             text-align: center;
             margin-top: 20px;
         }
-        .login-link a {
+        .register-link a {
             color: #2c5282;
         }
         .footer {
@@ -114,55 +106,16 @@
         <a href="../index.html">
             <img src="../assets/logo.png" alt="חכמת ההמונים" class="logo">
         </a>
-        <h1 class="site-title">הרשמה למערכת</h1>
+        <h1 class="site-title">כניסה למערכת</h1>
     </header>
     
     <main class="main-content">
         <div class="form-container">
-            <h2>טופס הרשמה</h2>
-            <form id="registrationForm">
-                <div class="form-group">
-                    <label for="role">אני:</label>
-                    <select id="role" name="role" required>
-                        <option value="">בחר...</option>
-                        <option value="mentor">מנטור</option>
-                        <option value="student">תלמיד</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="firstName">שם פרטי:</label>
-                    <input type="text" id="firstName" name="firstName" required placeholder="הזן שם פרטי">
-                </div>
-                
-                <div class="form-group">
-                    <label for="lastName">שם משפחה:</label>
-                    <input type="text" id="lastName" name="lastName" required placeholder="הזן שם משפחה">
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">טלפון:</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="הזן מספר טלפון">
-                </div>
-                
-                <div class="form-group">
-                    <label for="location">מיקום:</label>
-                    <input type="text" id="location" name="location" required placeholder="הזן עיר או אזור">
-                </div>
-                
-                <div class="form-group">
-                    <label for="subjects">תחומים:</label>
-                    <input type="text" id="subjects" name="subjects" required placeholder="הזן תחומי לימוד (מופרדים בפסיק)">
-                </div>
-                
-                <div class="form-group">
-                    <label for="about">אודות:</label>
-                    <textarea id="about" name="about" required placeholder="ספר על עצמך..."></textarea>
-                </div>
-                
+            <h2>כניסה לחשבון</h2>
+            <form id="loginForm">
                 <div class="form-group">
                     <label for="email">דוא"ל:</label>
-                    <input type="email" id="email" name="email" required placeholder="הזן כתובת דוא״ל">
+                    <input type="email" id="email" name="email" required placeholder="הזן את כתובת הדוא״ל">
                 </div>
                 
                 <div class="form-group">
@@ -170,11 +123,11 @@
                     <input type="password" id="password" name="password" required placeholder="הזן סיסמה">
                 </div>
                 
-                <button type="submit" class="submit-btn">הרשמה</button>
+                <button type="submit" class="submit-btn">כניסה</button>
             </form>
             
-            <div class="login-link">
-                <p>כבר יש לך חשבון? <a href="login.html">כניסה</a></p>
+            <div class="register-link">
+                <p>אין לך חשבון? <a href="register.html">הרשמה</a></p>
             </div>
             
             <a href="../index.html" class="back-link">← חזרה לעמוד הראשי</a>
@@ -184,12 +137,5 @@
     <footer class="footer">
         <p>&copy; 2026 חכמת ההמונים ביואב - כל הזכויות שמורות</p>
     </footer>
-    
-    <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('תודה על ההרשמה! נציג יצור איתך קשר בהקדם.');
-        });
-    </script>
 </body>
 </html>

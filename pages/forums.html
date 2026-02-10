@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פורומים - חכמת ההמונים ביואב</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #d4a574;
+        }
+        .logo {
+            max-width: 250px;
+            height: auto;
+        }
+        .site-title {
+            color: #2c5282;
+            margin: 10px 0 0 0;
+        }
+        .forums-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .forums-container h2 {
+            text-align: center;
+            color: #2c5282;
+            margin-bottom: 30px;
+        }
+        .forum-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .forum-item {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .forum-item:hover {
+            background-color: #f0fff4;
+            border-color: #48bb78;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .forum-title {
+            color: #2c5282;
+            font-size: 1.3em;
+            margin: 0 0 10px 0;
+        }
+        .forum-description {
+            color: #666;
+            margin: 0 0 15px 0;
+        }
+        .forum-stats {
+            display: flex;
+            gap: 20px;
+            color: #888;
+            font-size: 0.9em;
+        }
+        .forum-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .forum-categories {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .category-btn {
+            padding: 10px 20px;
+            border: 2px solid #d4a574;
+            border-radius: 20px;
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .category-btn:hover, .category-btn.active {
+            background-color: #48bb78;
+            border-color: #48bb78;
+            color: white;
+        }
+        .new-topic-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #48bb78;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: background-color 0.3s;
+        }
+        .new-topic-btn:hover {
+            background-color: #38a169;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            color: #2c5282;
+        }
+        .footer {
+            background-color: #2c5282;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="../index.html">
+            <img src="../assets/logo.png" alt="חכמת ההמונים" class="logo">
+        </a>
+        <h1 class="site-title">פורומים</h1>
+    </header>
+    
+    <main class="main-content">
+        <div class="forums-container">
+            <h2>קהילת חכמת ההמונים</h2>
+            
+            <button class="new-topic-btn">+ פתח נושא חדש</button>
+            
+            <div class="forum-categories">
+                <button class="category-btn active">הכל</button>
+                <button class="category-btn">מתמטיקה</button>
+                <button class="category-btn">פיזיקה</button>
+                <button class="category-btn">אנגלית</button>
+                <button class="category-btn">מדעי המחשב</button>
+                <button class="category-btn">כללי</button>
+            </div>
+            
+            <ul class="forum-list">
+                <li class="forum-item">
+                    <h3 class="forum-title">שאלות במתמטיקה</h3>
+                    <p class="forum-description">מקום לשאול שאלות ולקבל עזרה במתמטיקה בכל הרמות</p>
+                    <div class="forum-stats">
+                        <span class="forum-stat">📝 234 נושאים</span>
+                        <span class="forum-stat">💬 1,542 תגובות</span>
+                        <span class="forum-stat">👤 89 משתתפים פעילים</span>
+                    </div>
+                </li>
+                
+                <li class="forum-item">
+                    <h3 class="forum-title">פיזיקה ומדעים</h3>
+                    <p class="forum-description">דיונים בפיזיקה, כימיה ומדעי הטבע</p>
+                    <div class="forum-stats">
+                        <span class="forum-stat">📝 156 נושאים</span>
+                        <span class="forum-stat">💬 892 תגובות</span>
+                        <span class="forum-stat">👤 67 משתתפים פעילים</span>
+                    </div>
+                </li>
+                
+                <li class="forum-item">
+                    <h3 class="forum-title">אנגלית ושפות</h3>
+                    <p class="forum-description">לימוד אנגלית, תרגום ושפות נוספות</p>
+                    <div class="forum-stats">
+                        <span class="forum-stat">📝 189 נושאים</span>
+                        <span class="forum-stat">💬 1,123 תגובות</span>
+                        <span class="forum-stat">👤 78 משתתפים פעילים</span>
+                    </div>
+                </li>
+                
+                <li class="forum-item">
+                    <h3 class="forum-title">מדעי המחשב ותכנות</h3>
+                    <p class="forum-description">שאלות בתכנות, אלגוריתמים ומדעי המחשב</p>
+                    <div class="forum-stats">
+                        <span class="forum-stat">📝 312 נושאים</span>
+                        <span class="forum-stat">💬 2,345 תגובות</span>
+                        <span class="forum-stat">👤 145 משתתפים פעילים</span>
+                    </div>
+                </li>
+                
+                <li class="forum-item">
+                    <h3 class="forum-title">טיפים והכנה לבגרויות</h3>
+                    <p class="forum-description">שיתוף טיפים, חומרי לימוד והכנה לבחינות הבגרות</p>
+                    <div class="forum-stats">
+                        <span class="forum-stat">📝 278 נושאים</span>
+                        <span class="forum-stat">💬 1,876 תגובות</span>
+                        <span class="forum-stat">👤 112 משתתפים פעילים</span>
+                    </div>
+                </li>
+            </ul>
+            
+            <a href="../index.html" class="back-link">← חזרה לעמוד הראשי</a>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2026 חכמת ההמונים ביואב - כל הזכויות שמורות</p>
+    </footer>
+    
+    <script>
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

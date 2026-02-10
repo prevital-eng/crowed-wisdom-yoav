@@ -6,24 +6,181 @@
     <title>חכמת ההמונים ביואב</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background-color: #f3f4f6;
+            direction: rtl;
+        }
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+        .logo {
+            max-width: 200px;
+            width: 80%;
+            height: auto;
+            margin-bottom: 8px;
+        }
+        .sparkle {
+            display: block;
+            font-size: 0.9em;
+            color: #9ca3af;
+            margin-bottom: 15px;
+        }
+        .site-title {
+            color: #1e3a5f;
+            margin: 0 0 8px 0;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        .site-subtitle {
+            color: #6b7280;
+            font-size: 0.95em;
+            margin: 0 0 25px 0;
+        }
+        .transparency-box {
+            background-color: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .transparency-box h3 {
+            color: #92400e;
+            margin: 0 0 10px 0;
+            font-size: 1.05em;
+            font-weight: bold;
+        }
+        .transparency-box p {
+            color: #78350f;
+            margin: 0;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .login-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 22px 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .login-card h3 {
+            color: #1e3a5f;
+            margin: 0 0 18px 0;
+            font-size: 1.05em;
+            text-align: center;
+            font-weight: bold;
+        }
+        .login-card input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1em;
+            margin-bottom: 8px;
+            text-align: center;
+            background-color: #f9fafb;
+        }
+        .login-card input::placeholder {
+            color: #9ca3af;
+        }
+        .login-card input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .login-card .hint {
+            color: #9ca3af;
+            font-size: 0.85em;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.2s;
+            margin-bottom: 12px;
+        }
+        .btn-blue {
+            background-color: #3b5998;
+            color: white;
+        }
+        .btn-blue:hover {
+            background-color: #2d4373;
+        }
+        .btn-green {
+            background-color: #22c55e;
+            color: white;
+        }
+        .btn-green:hover {
+            background-color: #16a34a;
+        }
+        .btn-yellow {
+            background-color: #fbbf24;
+            color: #1e3a5f;
+        }
+        .btn-yellow:hover {
+            background-color: #f59e0b;
+        }
+        .footer-stats {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9em;
+            margin-top: 15px;
+            padding-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <img src="assets/logo.svg" alt="חכמת ההמונים" class="logo">
-        <h1 class="site-title">חכמת ההמונים ביואב</h1>
-    </header>
-    
-    <main class="main-content">
-        <div class="button-container">
-            <a href="pages/register.html" class="main-button">הרשמה</a>
-            <a href="pages/login.html" class="main-button">כניסה</a>
-            <a href="pages/search.html" class="main-button">חיפוש</a>
-            <a href="pages/forums.html" class="main-button">פורומים</a>
-        </div>
-    </main>
-    
-    <footer class="footer">
-        <p>&copy; 2026 חכמת ההמונים ביואב - כל הזכויות שמורות</p>
-    </footer>
+    <div class="container">
+        <header class="header">
+            <img src="assets/logo.png" alt="חכמת ההמונים" class="logo">
+            <span class="sparkle">✦</span>
+            <h1 class="site-title">חכמת ההמונים ביואב</h1>
+            <p class="site-subtitle">פלטפורמה קהילתית לשיתוף ידע ועזרה הדדית</p>
+        </header>
+        
+        <main>
+            <div class="transparency-box">
+                <h3>🙌 הצהרת שקיפות</h3>
+                <p>המידע שתשתף יהיה גלוי לכל חברי הקהילה לצורך חיבור ועזרה הדדית.</p>
+            </div>
+            
+            <div class="login-card">
+                <h3>👤 כניסה למשתמש קיים</h3>
+                <input type="tel" placeholder="הזן מספר טלפון (לדוגמה: 0501234567)">
+                <p class="hint">לא ניתן לטעון את הנתונים.</p>
+                <a href="pages/login.html" class="btn btn-blue">כניסה</a>
+            </div>
+            
+            <a href="pages/register.html" class="btn btn-green">✨ הצטרף כחבר קהילה חדש</a>
+            
+            <a href="pages/forums.html" class="btn btn-yellow">ℹ️ קרא עוד על הפרויקט</a>
+            
+            <div class="footer-stats">
+                <p>חברים רשומים: 0</p>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
