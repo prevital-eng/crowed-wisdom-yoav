@@ -7,90 +7,168 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: #f8f9fa;
+            background-color: #f5f5f5;
+            direction: rtl;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
         }
         .header {
-            background-color: #ffffff;
-            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid #d4a574;
+            padding: 30px 20px 10px;
         }
         .logo {
-            max-width: 350px;
+            max-width: 280px;
             width: 100%;
             height: auto;
         }
-        .site-title {
-            color: #2c5282;
-            margin: 15px 0 0 0;
-            font-size: 2em;
-        }
-        .main-content {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            background-color: #f8f9fa;
-        }
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            max-width: 600px;
-        }
-        .main-button {
-            display: inline-block;
-            padding: 18px 40px;
-            background-color: #48bb78;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
+        .sparkle {
             font-size: 1.2em;
+        }
+        .site-title {
+            color: #1e3a5f;
+            margin: 20px 0 10px 0;
+            font-size: 2em;
             font-weight: bold;
-            min-width: 150px;
+        }
+        .site-subtitle {
+            color: #6b7280;
+            font-size: 1em;
+            margin: 0 0 20px 0;
+        }
+        .transparency-box {
+            background-color: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .transparency-box h3 {
+            color: #92400e;
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+        }
+        .transparency-box p {
+            color: #78350f;
+            margin: 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .login-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .login-card h3 {
+            color: #1e3a5f;
+            margin: 0 0 15px 0;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        .login-card input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .login-card input::placeholder {
+            color: #9ca3af;
+        }
+        .login-card .hint {
+            color: #9ca3af;
+            font-size: 0.85em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
             text-align: center;
             transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
         }
-        .main-button:hover {
-            background-color: #38a169;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        .footer {
-            background-color: #2c5282;
+        .btn-blue {
+            background-color: #3b82f6;
             color: white;
+        }
+        .btn-blue:hover {
+            background-color: #2563eb;
+        }
+        .btn-green {
+            background-color: #22c55e;
+            color: white;
+        }
+        .btn-green:hover {
+            background-color: #16a34a;
+        }
+        .btn-yellow {
+            background-color: #fbbf24;
+            color: #1e3a5f;
+        }
+        .btn-yellow:hover {
+            background-color: #f59e0b;
+        }
+        .footer-stats {
             text-align: center;
-            padding: 20px;
+            color: #6b7280;
+            font-size: 0.9em;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <img src="assets/logo.png" alt="חכמת ההמונים" class="logo">
-        <h1 class="site-title">חכמת ההמונים ביואב</h1>
-    </header>
-    
-    <main class="main-content">
-        <div class="button-container">
-            <a href="pages/register.html" class="main-button">הרשמה</a>
-            <a href="pages/login.html" class="main-button">כניסה</a>
-            <a href="pages/search.html" class="main-button">חיפוש</a>
-            <a href="pages/forums.html" class="main-button">פורומים</a>
-        </div>
-    </main>
-    
-    <footer class="footer">
-        <p>&copy; 2026 חכמת ההמונים ביואב - כל הזכויות שמורות</p>
-    </footer>
+    <div class="container">
+        <header class="header">
+            <img src="assets/logo.png" alt="חכמת ההמונים" class="logo">
+            <span class="sparkle">✦</span>
+            <h1 class="site-title">חכמת ההמונים ביואב</h1>
+            <p class="site-subtitle">פלטפורמה קהילתית לשיתוף ידע ועזרה הדדית</p>
+        </header>
+        
+        <main>
+            <div class="transparency-box">
+                <h3>🙌 הצהרת שקיפות</h3>
+                <p>המידע שתשתף יהיה גלוי לכל חברי הקהילה לצורך חיבור ועזרה הדדית.</p>
+            </div>
+            
+            <div class="login-card">
+                <h3>👤 כניסה למשתמש קיים</h3>
+                <input type="tel" placeholder="הזן מספר טלפון (לדוגמה: 0501234567)">
+                <p class="hint">לא ניתן לטעון את הנתונים.</p>
+                <a href="pages/login.html" class="btn btn-blue">כניסה</a>
+            </div>
+            
+            <a href="pages/register.html" class="btn btn-green">✨ הצטרף כחבר קהילה חדש</a>
+            
+            <a href="pages/search.html" class="btn btn-yellow">ℹ️ חפש מנטור או תלמיד</a>
+            
+            <div class="footer-stats">
+                <p>חברים רשומים: 0</p>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
