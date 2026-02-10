@@ -6,7 +6,7 @@
 }
 
 header {
-  background-color: #ffcc00;
+  background-color: transparent;
   padding: 20px;
 }
 
@@ -15,12 +15,12 @@ header img {
 }
 
 h1 {
-  color: #d34e00;
+  color: #1e3a5f;
   font-size: 2.5em;
 }
 
 button {
-  background-color: #ff5733;
+  background-color: #3b5998;
   color: white;
   border: none;
   border-radius: 5px;
@@ -30,7 +30,7 @@ button {
 }
 
 button:hover {
-  background-color: #c70039;
+  background-color: #2d4373;
 }
 
 .footer {

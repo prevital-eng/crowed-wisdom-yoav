@@ -9,113 +9,124 @@
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             min-height: 100vh;
-            background-color: #f5f5f5;
+            background-color: #f3f4f6;
             direction: rtl;
         }
         .container {
-            max-width: 500px;
+            max-width: 420px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px 16px;
         }
         .header {
             text-align: center;
-            padding: 30px 20px 10px;
+            padding: 20px 0 10px;
         }
         .logo {
-            max-width: 280px;
-            width: 100%;
+            max-width: 200px;
+            width: 80%;
             height: auto;
+            margin-bottom: 8px;
         }
         .sparkle {
-            font-size: 1.2em;
+            display: block;
+            font-size: 0.9em;
+            color: #9ca3af;
+            margin-bottom: 15px;
         }
         .site-title {
             color: #1e3a5f;
-            margin: 20px 0 10px 0;
-            font-size: 2em;
+            margin: 0 0 8px 0;
+            font-size: 1.8em;
             font-weight: bold;
         }
         .site-subtitle {
             color: #6b7280;
-            font-size: 1em;
-            margin: 0 0 20px 0;
+            font-size: 0.95em;
+            margin: 0 0 25px 0;
         }
         .transparency-box {
             background-color: #fef3c7;
             border: 2px solid #f59e0b;
-            border-radius: 12px;
-            padding: 15px 20px;
+            border-radius: 16px;
+            padding: 18px 20px;
             margin-bottom: 20px;
             text-align: center;
         }
         .transparency-box h3 {
             color: #92400e;
-            margin: 0 0 8px 0;
-            font-size: 1.1em;
+            margin: 0 0 10px 0;
+            font-size: 1.05em;
+            font-weight: bold;
         }
         .transparency-box p {
             color: #78350f;
             margin: 0;
             font-size: 0.9em;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         .login-card {
             background-color: white;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            padding: 22px 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .login-card h3 {
             color: #1e3a5f;
-            margin: 0 0 15px 0;
-            font-size: 1.1em;
+            margin: 0 0 18px 0;
+            font-size: 1.05em;
             text-align: center;
+            font-weight: bold;
         }
         .login-card input {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             border: 1px solid #e5e7eb;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1em;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-align: center;
+            background-color: #f9fafb;
         }
         .login-card input::placeholder {
             color: #9ca3af;
+        }
+        .login-card input:focus {
+            outline: none;
+            border-color: #3b82f6;
         }
         .login-card .hint {
             color: #9ca3af;
             font-size: 0.85em;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
         .btn {
             display: block;
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             border: none;
-            border-radius: 10px;
+            border-radius: 14px;
             font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.2s;
             margin-bottom: 12px;
         }
         .btn-blue {
-            background-color: #3b82f6;
+            background-color: #3b5998;
             color: white;
         }
         .btn-blue:hover {
-            background-color: #2563eb;
+            background-color: #2d4373;
         }
         .btn-green {
             background-color: #22c55e;
@@ -135,7 +146,8 @@
             text-align: center;
             color: #6b7280;
             font-size: 0.9em;
-            margin-top: 20px;
+            margin-top: 15px;
+            padding-bottom: 20px;
         }
     </style>
 </head>
@@ -163,7 +175,7 @@
             
             <a href="pages/register.html" class="btn btn-green">✨ הצטרף כחבר קהילה חדש</a>
             
-            <a href="pages/search.html" class="btn btn-yellow">ℹ️ חפש מנטור או תלמיד</a>
+            <a href="pages/forums.html" class="btn btn-yellow">ℹ️ קרא עוד על הפרויקט</a>
             
             <div class="footer-stats">
                 <p>חברים רשומים: 0</p>
