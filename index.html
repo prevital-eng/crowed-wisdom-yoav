@@ -305,6 +305,7 @@
                     if (savedUser) {
                         const user = JSON.parse(savedUser);
                         setCurrentUser(user);
+                        setFormData(user);
                         setStep('dashboard');
                         
                         // הצגת מסר ברוכה שובה
