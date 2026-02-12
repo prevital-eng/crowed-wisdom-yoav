@@ -423,6 +423,32 @@
                 }
             };
 
+            const logForumActivity = async (activityType, forumId, forumTitle, details = '') => {
+                if (!currentUser) return;
+                
+                try {
+                    const activityData = {
+                        action: 'logForumActivity',
+                        userPhone: currentUser.phone,
+                        userName: `${currentUser.firstName} ${currentUser.lastName}`,
+                        userRole: currentUser.role,
+                        activityType: activityType,
+                        forumId: forumId,
+                        forumTitle: forumTitle,
+                        details: details,
+                        timestamp: new Date().toISOString()
+                    };
+
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: JSON.stringify(activityData)
+                    });
+                } catch (err) {
+                    console.error("שגיאה ברישום פעילות פורום:", err);
+                }
+            };
+
             const handleLogin = () => {
                 setError('');
                 const cleanInput = loginPhone.replace(/\D/g, '');
@@ -575,6 +601,11 @@
                         throw new Error('שגיאה ביצירת הפורום');
                     }
 
+                    const result = await response.json();
+                    const newForumId = result.forumId || Date.now().toString();
+                    
+                    await logForumActivity('forum_created', newForumId, forumFormData.title, `קטגוריה: ${forumFormData.category}`);
+
                     alert("✅ הפורום נוצר בהצלחה!");
                     setForumFormData({ title: '', content: '', category: '' });
                     await loadForums();
@@ -614,6 +645,9 @@
                     if (!response.ok) {
                         throw new Error('שגיאה בשליחת התגובה');
                     }
+
+                    const forumTitle = selectedForum ? selectedForum.title : '';
+                    await logForumActivity('forum_reply', forumId, forumTitle, (replyContent || '').substring(0, 100));
 
                     setReplyContent('');
                     await loadForumReplies(forumId);
