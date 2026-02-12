@@ -1,9 +1,92 @@
-<html>
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
 <head>
-    <title>Admin Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ממשק מנהל | חכמת ההמונים ביואב</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Assistant', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            padding: 2.5rem;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 { color: #1e3a5f; font-size: 1.75rem; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1.25rem; text-align: right; }
+        label { display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem; }
+        input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-family: 'Assistant', sans-serif;
+            direction: rtl;
+            transition: border-color 0.2s;
+        }
+        input:focus { outline: none; border-color: #6366f1; }
+        button {
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Assistant', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+        button:hover { background: linear-gradient(135deg, #4f46e5, #4338ca); transform: translateY(-2px); }
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .error { color: #ef4444; font-size: 0.875rem; margin-top: 0.5rem; display: none; }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Admin Dashboard</h1>
-    <p>ADMIN_PASSWORD: admin1234</p>
+    <div class="card">
+        <h1>🔧 ממשק מנהל</h1>
+        <p style="color: #6b7280; margin-bottom: 1.5rem;">הזן סיסמת מנהל כדי להיכנס</p>
+        <form id="adminForm" onsubmit="return handleLogin(event)">
+            <div class="form-group">
+                <label for="password">סיסמה</label>
+                <input type="password" id="password" placeholder="הזן סיסמת מנהל" required>
+                <p class="error" id="errorMsg">סיסמה שגויה, נסה שוב</p>
+            </div>
+            <button type="submit">כניסה</button>
+        </form>
+        <a href="../index.html" class="back-link">← חזרה לדף הראשי</a>
+    </div>
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            var errorEl = document.getElementById('errorMsg');
+            errorEl.style.display = 'none';
+            alert('ממשק המנהל בפיתוח. פנה למנהל המערכת.');
+            return false;
+        }
+    </script>
 </body>
 </html>

@@ -1,69 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <link rel="stylesheet" href="style.css"> <!-- Add your styles here -->
+    <title>טופס הרשמה | חכמת ההמונים ביואב</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Assistant', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 { color: #1e3a5f; font-size: 1.75rem; margin-bottom: 0.5rem; text-align: center; }
+        .subtitle { color: #6b7280; text-align: center; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; font-weight: 600; color: #374151; margin-bottom: 0.35rem; font-size: 0.95rem; }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-family: 'Assistant', sans-serif;
+            direction: rtl;
+            transition: border-color 0.2s;
+        }
+        textarea { resize: vertical; min-height: 80px; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #6366f1; }
+        .mandatory { color: #ef4444; }
+        button {
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Assistant', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        button:hover { background: linear-gradient(135deg, #2563eb, #1d4ed8); transform: translateY(-2px); }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.25rem;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .note { background: #fef3c7; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; color: #92400e; margin-bottom: 1.25rem; text-align: center; }
+    </style>
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Logo" /> <!-- Replace with your logo -->
-        <h1>Registration Form</h1>
-    </header>
-    <form id="registrationForm">
-        <div>
-            <label for="role">I am a:</label>
-            <select id="role" name="role" required>
-                <option value="mentor">Mentor</option>
-                <option value="student">Student</option>
-            </select>
-        </div>
-        
-        <div>
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
-        </div>
-        
-        <div>
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
-        </div>
-        
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required>
-        </div>
-        
-        <div>
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" required>
-        </div>
-        
-        <div>
-            <label for="subjects">Subjects:</label>
-            <input type="text" id="subjects" name="subjects" required>
-        </div>
-        
-        <div>
-            <label for="about">About:</label>
-            <textarea id="about" name="about" required></textarea>
-        </div>
-        
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        
-        <button type="submit">Register</button>
-    </form>
+    <div class="card">
+        <h1>✨ הצטרפות לקהילה</h1>
+        <p class="subtitle">חכמת ההמונים ביואב - מיזם מנטורינג קהילתי</p>
+        <div class="note">💡 ניתן גם להירשם דרך הדף הראשי של האתר</div>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label>אני: <span class="mandatory">*</span></label>
+                <select id="role" name="role" required>
+                    <option value="mentor">מנטור (חונך)</option>
+                    <option value="mentee">חניך</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>שם פרטי: <span class="mandatory">*</span></label>
+                <input type="text" id="firstName" name="firstName" placeholder="הזן שם פרטי" required>
+            </div>
+            <div class="form-group">
+                <label>שם משפחה: <span class="mandatory">*</span></label>
+                <input type="text" id="lastName" name="lastName" placeholder="הזן שם משפחה" required>
+            </div>
+            <div class="form-group">
+                <label>טלפון: <span class="mandatory">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="05X-XXXXXXX" required dir="ltr">
+            </div>
+            <div class="form-group">
+                <label>אימייל:</label>
+                <input type="email" id="email" name="email" placeholder="example@email.com" dir="ltr">
+            </div>
+            <div class="form-group">
+                <label>מיקום: <span class="mandatory">*</span></label>
+                <input type="text" id="location" name="location" placeholder="עיר / יישוב" required>
+            </div>
+            <div class="form-group">
+                <label>תחומי עניין:</label>
+                <input type="text" id="subjects" name="subjects" placeholder="טכנולוגיה, עסקים, חינוך...">
+            </div>
+            <div class="form-group">
+                <label>קצת על עצמך:</label>
+                <textarea id="about" name="about" placeholder="ספר/י על עצמך בכמה מילים..."></textarea>
+            </div>
+            <button type="submit">הרשמה</button>
+        </form>
+        <a href="../index.html" class="back-link">← חזרה לדף הראשי</a>
+    </div>
     <script>
-        // JavaScript code for Google Sheets integration goes here
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('תודה על ההרשמה! ניתן גם להירשם דרך הדף הראשי של האתר לחוויה מלאה.');
+        });
     </script>
 </body>
 </html>

@@ -162,18 +162,25 @@
         /* Admin Link */
         .admin-link {
             display: inline-block;
-            color: #1e40af;
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
             font-size: 0.875rem;
-            font-weight: 600;
-            transition: color 0.2s;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
             cursor: pointer;
             text-decoration: none;
-            margin-top: 0.5rem;
+            margin-top: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
         }
         
         .admin-link:hover {
-            color: #1e3a8a;
-            text-decoration: underline;
+            background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px -2px rgba(99, 102, 241, 0.4);
         }
     </style>
 </head>
@@ -931,9 +938,9 @@
                                 </button>
 
                                 {/* Admin Link */}
-                                <div className="text-center">
+                                <div className="text-center mt-4">
                                     <a href="pages/admin-dashboard.html" className="admin-link">
-                                        ממשק מנהל
+                                        🔧 ממשק מנהל
                                     </a>
                                 </div>
 
