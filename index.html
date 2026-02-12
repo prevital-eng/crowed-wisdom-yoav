@@ -88,6 +88,61 @@
             .rounded-3xl {
                 border-radius: 1.5rem !important;
             }
+            
+            /* תיקון גודל לוגו למובייל */
+            img[alt="לוגו"] {
+                max-width: 150px !important;
+            }
+            
+            /* תיקון תפריט תחתון למובייל */
+            .bottom-nav {
+                padding: 0.5rem 0;
+            }
+            
+            .nav-item {
+                font-size: 0.65rem;
+                gap: 0.15rem;
+            }
+            
+            .nav-icon {
+                font-size: 1.25rem;
+            }
+            
+            /* הבטחת רוחב מלא לתפריט */
+            .bottom-nav .max-w-md {
+                max-width: 100%;
+            }
+        }
+        
+        /* תיקונים נוספים למכשירים קטנים מאוד (כמו Samsung Galaxy) */
+        @media (max-width: 400px) {
+            /* לוגו קטן יותר */
+            img[alt="לוגו"] {
+                max-width: 120px !important;
+            }
+            
+            /* תפריט תחתון צפוף יותר */
+            .nav-item {
+                font-size: 0.6rem;
+                gap: 0.1rem;
+                padding: 0.25rem;
+            }
+            
+            .nav-icon {
+                font-size: 1.1rem;
+            }
+            
+            /* הקטנת ריווחים */
+            .bottom-nav .px-4 {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            
+            /* וידוא שכל הכפתורים נראים */
+            .bottom-nav .flex {
+                justify-content: space-between !important;
+                gap: 0.25rem;
+            }
         }
         
         /* Fallback styles for buttons in case Tailwind doesn't load */
@@ -902,7 +957,7 @@
                     <div className="min-h-screen flex flex-col items-center justify-center p-6 text-right" dir="rtl">
                         <div className="bg-white p-10 rounded-3xl shadow-2xl max-w-md w-full border-t-8 border-blue-600">
                             <div className="text-center mb-6">
-                                <img src={LOGO_BASE64} alt="לוגו" className="mx-auto mb-6" style={{maxWidth: '250px', height: 'auto'}} />
+                                <img src={LOGO_BASE64} alt="לוגו" className="mx-auto mb-6" style={{maxWidth: '200px', width: '90%', height: 'auto'}} />
                                 <h1 className="text-4xl font-bold mb-2 text-blue-900">חכמת ההמונים ביואב</h1>
                                 <p className="text-slate-600 text-sm">פלטפורמה קהילתית לשיתוף ידע ועזרה הדדית</p>
                             </div>
