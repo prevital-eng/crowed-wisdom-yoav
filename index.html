@@ -88,6 +88,96 @@
             .rounded-3xl {
                 border-radius: 1.5rem !important;
             }
+            
+            /* תיקון גודל לוגו למובייל */
+            img[alt="לוגו"] {
+                max-width: 150px !important;
+            }
+            
+            /* תיקון תפריט תחתון למובייל */
+            .bottom-nav {
+                padding: 0.5rem 0;
+            }
+            
+            .nav-item {
+                font-size: 0.65rem;
+                gap: 0.15rem;
+            }
+            
+            .nav-icon {
+                font-size: 1.25rem;
+            }
+            
+            /* הבטחת רוחב מלא לתפריט */
+            .bottom-nav .max-w-md {
+                max-width: 100%;
+            }
+        }
+        
+        /* תיקונים נוספים למכשירים קטנים מאוד (כמו Samsung Galaxy) */
+        @media (max-width: 400px) {
+            /* לוגו קטן יותר */
+            img[alt="לוגו"] {
+                max-width: 120px !important;
+            }
+            
+            /* תפריט תחתון צפוף יותר */
+            .nav-item {
+                font-size: 0.6rem;
+                gap: 0.1rem;
+                padding: 0.25rem;
+            }
+            
+            .nav-icon {
+                font-size: 1.1rem;
+            }
+            
+            /* הקטנת ריווחים */
+            .bottom-nav .px-4 {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            
+            /* וידוא שכל הכפתורים נראים */
+            .bottom-nav .flex {
+                justify-content: space-between !important;
+                gap: 0.25rem;
+            }
+        }
+        
+        /* Fallback styles for buttons in case Tailwind doesn't load */
+        .welcome-button {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .welcome-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .welcome-button-blue {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+        
+        .welcome-button-green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .welcome-button-purple {
+            background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
         }
         
         /* Touch-friendly buttons */
@@ -867,7 +957,7 @@
                     <div className="min-h-screen flex flex-col items-center justify-center p-6 text-right" dir="rtl">
                         <div className="bg-white p-10 rounded-3xl shadow-2xl max-w-md w-full border-t-8 border-blue-600">
                             <div className="text-center mb-6">
-                                <img src={LOGO_BASE64} alt="לוגו" className="mx-auto mb-6" style={{maxWidth: '250px', height: 'auto'}} />
+                                <img src={LOGO_BASE64} alt="לוגו" className="mx-auto mb-6" style={{maxWidth: '200px', width: '90%', height: 'auto'}} />
                                 <h1 className="text-4xl font-bold mb-2 text-blue-900">חכמת ההמונים ביואב</h1>
                                 <p className="text-slate-600 text-sm">פלטפורמה קהילתית לשיתוף ידע ועזרה הדדית</p>
                             </div>
@@ -900,17 +990,22 @@
 
                                 <button 
                                     onClick={() => setStep('register')} 
-                                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white p-4 rounded-xl font-bold shadow-lg transition"
+                                    className="welcome-button welcome-button-blue w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white p-4 rounded-xl font-bold shadow-lg transition"
                                 >
                                     ✨ הצטרף כחבר קהילה חדש
                                 </button>
                                 <button 
                                     onClick={() => setStep('about')} 
-                                    className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white p-4 rounded-xl font-bold shadow-lg transition"
+                                    className="welcome-button welcome-button-green w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white p-4 rounded-xl font-bold shadow-lg transition"
                                 >
                                     ℹ️ קרא עוד על הפרויקט
                                 </button>
-
+                                <button 
+                                    onClick={() => window.location.href = 'admin.html'} 
+                                    className="welcome-button welcome-button-purple w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white p-4 rounded-xl font-bold shadow-lg transition"
+                                >
+                                    🎯 כניסה לאדמין
+                                </button>
 
                                 <div className="text-center text-xs text-slate-500 mt-6">
                                     <p>חברים רשומים: <span className="font-bold text-blue-600">{users.length}</span></p>

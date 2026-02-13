@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>בדיקת תצוגה מובייל - Mobile Test</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 10px;
+        }
+        
+        .test-container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .logo-container {
+            text-align: center;
+            padding: 20px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            max-width: 200px;
+            width: 90%;
+            height: auto;
+            border: 2px solid #3b82f6;
+            border-radius: 10px;
+        }
+        
+        /* תיקונים למובייל */
+        @media (max-width: 640px) {
+            .logo {
+                max-width: 150px !important;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .logo {
+                max-width: 120px !important;
+            }
+        }
+        
+        /* סימולציה של תפריט תחתון */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0.75rem 0;
+        }
+        
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* תיקונים למובייל */
+        @media (max-width: 640px) {
+            .bottom-nav {
+                padding: 0.5rem 0;
+            }
+            
+            .nav-item {
+                font-size: 0.65rem;
+                gap: 0.15rem;
+            }
+            
+            .nav-icon {
+                font-size: 1.25rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .nav-item {
+                font-size: 0.6rem;
+                gap: 0.1rem;
+                padding: 0.25rem;
+            }
+            
+            .nav-icon {
+                font-size: 1.1rem;
+            }
+            
+            .nav-container {
+                padding: 0 0.5rem;
+            }
+            
+            .nav-items {
+                justify-content: space-between;
+                gap: 0.25rem;
+            }
+        }
+        
+        .content {
+            padding-bottom: 100px;
+        }
+        
+        .info-box {
+            background: #dcfce7;
+            border: 2px solid #22c55e;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .device-info {
+            background: #e0e7ff;
+            border: 2px solid #6366f1;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .check-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="test-container">
+            <h1>🎯 בדיקת תצוגה מובייל</h1>
+            <div class="device-info">
+                <strong>מידע על המכשיר:</strong><br>
+                רוחב מסך: <span id="screenWidth">...</span>px<br>
+                גובה מסך: <span id="screenHeight">...</span>px<br>
+                רוחב תצוגה: <span id="viewportWidth">...</span>px<br>
+                סוג מכשיר: <span id="deviceType">...</span>
+            </div>
+        </div>
+        
+        <div class="test-container">
+            <h2 style="color: #059669; margin-bottom: 15px;">✅ בדיקה 1: גודל לוגו</h2>
+            <div class="logo-container">
+                <div class="logo" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem;">
+                    LOGO
+                </div>
+            </div>
+            <div class="info-box">
+                <strong>✓ אם הלוגו נראה בגבולות:</strong><br>
+                - רוחב > 640px: מקסימום 200px<br>
+                - רוחב 400-640px: מקסימום 150px<br>
+                - רוחב < 400px: מקסימום 120px
+            </div>
+        </div>
+        
+        <div class="test-container">
+            <h2 style="color: #059669; margin-bottom: 15px;">✅ בדיקה 2: תפריט תחתון</h2>
+            <div class="info-box">
+                <strong>בדוק את התפריט בתחתית המסך:</strong><br>
+                האם רואה את כל 5 הכפתורים?<br>
+                - פרופיל (👤)<br>
+                - חיפוש (🔍)<br>
+                - פורומים (💬)<br>
+                - AI (🤖)<br>
+                - יציאה (🚪) ← חשוב במיוחד!
+            </div>
+            <div class="warning-box" id="navCheck">
+                <strong>⚠️ טוען בדיקה...</strong>
+            </div>
+        </div>
+        
+        <div class="test-container">
+            <h2 style="color: #059669; margin-bottom: 15px;">📋 תוצאות</h2>
+            <div class="check-item">
+                <span id="logoCheck">⏳ בודק גודל לוגו...</span>
+            </div>
+            <div class="check-item">
+                <span id="navWidthCheck">⏳ בודק רוחב תפריט...</span>
+            </div>
+            <div class="check-item">
+                <span id="buttonCountCheck">⏳ בודק מספר כפתורים...</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- תפריט תחתון -->
+    <div class="bottom-nav">
+        <div class="nav-container">
+            <div class="nav-items">
+                <div class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span>פרופיל</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🔍</span>
+                    <span>חיפוש</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">💬</span>
+                    <span>פורומים</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🤖</span>
+                    <span>AI</span>
+                </div>
+                <div class="nav-item" id="exitButton">
+                    <span class="nav-icon">🚪</span>
+                    <span>יציאה</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // מידע על המכשיר
+        document.getElementById('screenWidth').textContent = screen.width;
+        document.getElementById('screenHeight').textContent = screen.height;
+        document.getElementById('viewportWidth').textContent = window.innerWidth;
+        
+        const width = window.innerWidth;
+        let deviceType = 'Desktop';
+        if (width < 400) deviceType = 'Small Mobile (< 400px)';
+        else if (width < 640) deviceType = 'Mobile (< 640px)';
+        else if (width < 768) deviceType = 'Tablet';
+        document.getElementById('deviceType').textContent = deviceType;
+        
+        // בדיקת גודל לוגו
+        setTimeout(() => {
+            const logo = document.querySelector('.logo');
+            const logoWidth = logo.offsetWidth;
+            let expected = 200;
+            if (width < 640) expected = 150;
+            if (width < 400) expected = 120;
+            
+            const logoCheck = document.getElementById('logoCheck');
+            if (logoWidth <= expected) {
+                logoCheck.innerHTML = `✅ גודל לוגו תקין: ${logoWidth}px (מקסימום: ${expected}px)`;
+                logoCheck.style.color = '#059669';
+            } else {
+                logoCheck.innerHTML = `❌ לוגו גדול מדי: ${logoWidth}px (צריך להיות: ${expected}px)`;
+                logoCheck.style.color = '#dc2626';
+            }
+        }, 100);
+        
+        // בדיקת רוחב תפריט
+        setTimeout(() => {
+            const nav = document.querySelector('.bottom-nav');
+            const navWidth = nav.offsetWidth;
+            const windowWidth = window.innerWidth;
+            
+            const navWidthCheck = document.getElementById('navWidthCheck');
+            if (navWidth === windowWidth) {
+                navWidthCheck.innerHTML = `✅ תפריט תופס רוחב מלא: ${navWidth}px`;
+                navWidthCheck.style.color = '#059669';
+            } else {
+                navWidthCheck.innerHTML = `⚠️ תפריט לא תופס רוחב מלא: ${navWidth}px מתוך ${windowWidth}px`;
+                navWidthCheck.style.color = '#f59e0b';
+            }
+        }, 100);
+        
+        // בדיקת נראות כפתור יציאה
+        setTimeout(() => {
+            const exitButton = document.getElementById('exitButton');
+            const rect = exitButton.getBoundingClientRect();
+            const isVisible = rect.right <= window.innerWidth && rect.left >= 0;
+            
+            const buttonCountCheck = document.getElementById('buttonCountCheck');
+            const navCheck = document.getElementById('navCheck');
+            
+            if (isVisible) {
+                buttonCountCheck.innerHTML = `✅ כפתור יציאה נראה (מיקום: ${Math.round(rect.left)}px - ${Math.round(rect.right)}px)`;
+                buttonCountCheck.style.color = '#059669';
+                navCheck.innerHTML = '<strong>✅ כל הכפתורים נראים!</strong>';
+                navCheck.style.background = '#dcfce7';
+                navCheck.style.borderColor = '#22c55e';
+            } else {
+                buttonCountCheck.innerHTML = `❌ כפתור יציאה לא נראה! (מיקום: ${Math.round(rect.left)}px - ${Math.round(rect.right)}px, רוחב: ${window.innerWidth}px)`;
+                buttonCountCheck.style.color = '#dc2626';
+                navCheck.innerHTML = '<strong>❌ כפתור יציאה לא נראה במסך!</strong><br>גלול שמאלה או הגדל את המסך';
+                navCheck.style.background = '#fee2e2';
+                navCheck.style.borderColor = '#dc2626';
+            }
+        }, 200);
+        
+        // עדכון בזמן שינוי גודל
+        window.addEventListener('resize', () => {
+            location.reload();
+        });
+    </script>
+</body>
+</html>

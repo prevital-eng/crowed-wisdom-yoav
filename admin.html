@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול אדמין - חכמת ההמונים</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-content">
+                <h1>🎯 לוח ניהול אדמין</h1>
+                <p>ניהול ומעקב אחר פעילות מנטורים וחניכים</p>
+            </div>
+            <div class="header-actions">
+                <a href="index.html" class="btn-home">חזרה לעמוד הראשי</a>
+            </div>
+        </header>
+
+        <!-- Filters Section -->
+        <section class="filters-section">
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="searchInput">🔍 חיפוש לפי שם מנטור/חניך:</label>
+                    <input type="text" id="searchInput" placeholder="הזן שם מנטור או חניך...">
+                </div>
+
+                <div class="filter-group">
+                    <label for="activityTypeFilter">📋 סוג פעילות:</label>
+                    <select id="activityTypeFilter">
+                        <option value="all">הכל</option>
+                        <option value="message">הודעה</option>
+                        <option value="meeting">פגישה</option>
+                        <option value="feedback">משוב</option>
+                        <option value="login">התחברות</option>
+                        <option value="registration">הרשמה</option>
+                        <option value="profile_update">עדכון פרופיל</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="dateFromFilter">📅 מתאריך:</label>
+                    <input type="date" id="dateFromFilter">
+                </div>
+
+                <div class="filter-group">
+                    <label for="dateToFilter">📅 עד תאריך:</label>
+                    <input type="date" id="dateToFilter">
+                </div>
+
+                <div class="filter-actions">
+                    <button id="applyFiltersBtn" class="btn-primary">סנן</button>
+                    <button id="resetFiltersBtn" class="btn-secondary">איפוס</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="statistics-section">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalMentors">0</div>
+                    <div class="stat-label">מנטורים</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎓</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalMentees">0</div>
+                    <div class="stat-label">חניכים</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💬</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalInteractions">0</div>
+                    <div class="stat-label">אינטראקציות</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="activePairs">0</div>
+                    <div class="stat-label">זוגות פעילים</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Table Section -->
+        <section class="table-section">
+            <div class="table-header">
+                <h2>📊 פעילות אינטראקציות</h2>
+                <div class="results-count">
+                    מציג <span id="resultsCount">0</span> תוצאות
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table id="activityTable">
+                    <thead>
+                        <tr>
+                            <th>תאריך ושעה</th>
+                            <th>סוג פעילות</th>
+                            <th>מנטור</th>
+                            <th>חניך</th>
+                            <th>תוכן האינטראקציה</th>
+                            <th>תגיות</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityTableBody">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results" style="display: none;">
+                <div class="no-results-icon">🔍</div>
+                <p>לא נמצאו תוצאות מתאימות</p>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="loading-spinner">
+                <div class="spinner"></div>
+                <p>טוען נתונים...</p>
+            </div>
+        </section>
+
+        <!-- Activity Logs Section -->
+        <section class="logs-section">
+            <h2>📝 יומני פעילות</h2>
+            <div class="logs-tabs">
+                <button class="log-tab active" data-tab="mentors">פעילות מנטורים</button>
+                <button class="log-tab" data-tab="mentees">פעילות חניכים</button>
+            </div>
+            <div class="logs-container">
+                <div id="mentorsLogs" class="logs-content active">
+                    <!-- Mentors logs will be populated here -->
+                </div>
+                <div id="menteesLogs" class="logs-content">
+                    <!-- Mentees logs will be populated here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
