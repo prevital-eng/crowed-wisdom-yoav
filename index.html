@@ -159,22 +159,6 @@
             animation: fadeIn 0.3s ease-out;
         }
         
-        /* Admin Link */
-        .admin-link {
-            display: inline-block;
-            color: #1e40af;
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: color 0.2s;
-            cursor: pointer;
-            text-decoration: none;
-            margin-top: 0.5rem;
-        }
-        
-        .admin-link:hover {
-            color: #1e3a8a;
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
@@ -929,13 +913,6 @@
                                 >
                                     ℹ️ קרא עוד על הפרויקט
                                 </button>
-
-                                {/* Admin Link */}
-                                <div className="text-center">
-                                    <a href="admin.html" className="admin-link">
-                                        ממשק מנהל
-                                    </a>
-                                </div>
 
                                 <div className="text-center text-xs text-slate-500 mt-6">
                                     <p>חברים רשומים: <span className="font-bold text-blue-600">{users.length}</span></p>
