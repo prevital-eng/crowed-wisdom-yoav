@@ -415,7 +415,80 @@
                 }
             };
 
-            const logActivity = async (mentorPhone, mentorName, contactMethod) => {
+            const logActivity = async (mentorPhone, mentorName, contactMethod) => {// פונקציה מרכזית לתיעוד כל הפעילויות
+const logGeneralActivity = async (activityType, details) => {
+    if (!currentUser) return;
+    
+    try {
+        const activityData = {
+            action: 'logGeneralActivity',
+            userPhone: currentUser.phone,
+            userName: `${currentUser.firstName} ${currentUser.lastName}`,
+            userRole: currentUser.role,
+            activityType: activityType,
+            details: JSON.stringify(details),
+            timestamp: new Date().toISOString()
+        };
+
+        await fetch(SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify(activityData)
+        });
+    } catch (err) {
+        console.error("שגיאה ברישום פעילות:", err);
+    }
+};
+
+// מערכת דיווח על תוכן בעייתי
+const flagContent = async (contentType, contentId, contentAuthor, reason) => {
+    try {
+        const flagData = {
+            action: 'flagContent',
+            reporterPhone: currentUser.phone,
+            reporterName: `${currentUser.firstName} ${currentUser.lastName}`,
+            contentType: contentType,
+            contentId: contentId,
+            contentAuthor: contentAuthor,
+            reason: reason,
+            timestamp: new Date().toISOString()
+        };
+
+        await fetch(SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify(flagData)
+        });
+
+        alert('✅ התוכן דווח למנהלי המערכת. תודה!');
+    } catch (err) {
+        console.error('שגיאה בדיווח:', err);
+        alert('אירעה שגיאה בשליחת הדיווח.');
+    }
+};
+
+// סינון תוכן אוטומטי
+const BANNED_WORDS = ['מטומטם', 'טיפש', 'אידיוט', 'מפגר', 'דביל', 'שמאלן', 'ימין', 'קוקסינל'];
+
+const containsBannedWords = (text) => {
+    const lowerText = text.toLowerCase();
+    return BANNED_WORDS.some(word => lowerText.includes(word));
+};
+
+const validateContent = (content, contentType = 'תוכן') => {
+    if (!content.trim()) {
+        return { valid: false, error: `אנא הזן ${contentType}` };
+    }
+    
+    if (containsBannedWords(content)) {
+        return { 
+            valid: false, 
+            error: '⚠️ התוכן מכיל שפה לא הולמת. אנא שמור על תרבות דיבור נאותה.' 
+        };
+    }
+    
+    return { valid: true };
+};
                 if (!currentUser || currentUser.role !== 'mentee') return;
                 
                 try {
@@ -551,7 +624,11 @@
                     if (!response.ok) {
                         throw new Error('שגיאה בשמירת הנתונים');
                     }
-
+// תיעוד עדכון פרופיל
+await logGeneralActivity('profile_updated', {
+    role: formData.role,
+    fieldsCount: fieldsToSend.length
+});
                     alert("✅ הפרטים נשלחו בהצלחה! תודה שהצטרפת לקהילה.");
                     setCurrentUser(formData);
                     await loadUsers();
@@ -565,7 +642,18 @@
             };
 
             // פונקציות פורום
-            const createForum = async () => {
+            const createForum = async () => {// בדיקת תוכן
+const titleValidation = validateContent(forumFormData.title, 'כותרת');
+if (!titleValidation.valid) {
+    setError(titleValidation.error);
+    return;
+}
+
+const contentValidation = validateContent(forumFormData.content, 'תוכן');
+if (!contentValidation.valid) {
+    setError(contentValidation.error);
+    return;
+}
                 if (!forumFormData.title || !forumFormData.content || !forumFormData.category) {
                     setError('אנא מלא את כל השדות');
                     return;
@@ -594,7 +682,12 @@
                         throw new Error('שגיאה ביצירת הפורום');
                     }
 
-                    alert("✅ הפורום נוצר בהצלחה!");
+                    // תיעוד יצירת פורום
+await logGeneralActivity('forum_created', {
+    title: forumFormData.title,
+    category: forumFormData.category,
+    contentLength: forumFormData.content.length
+});alert("✅ הפורום נוצר בהצלחה!");
                     setForumFormData({ title: '', content: '', category: '' });
                     await loadForums();
                     setStep('forums');
@@ -607,7 +700,12 @@
             };
 
             const createReply = async (forumId) => {
-                if (!replyContent.trim()) {
+                if (// בדיקת תוכן
+const validation = validateContent(replyContent, 'תגובה');
+if (!validation.valid) {
+    setError(validation.error);
+    return;
+}()) {
                     setError('אנא כתוב תגובה');
                     return;
                 }
@@ -633,7 +731,12 @@
                     if (!response.ok) {
                         throw new Error('שגיאה בשליחת התגובה');
                     }
-
+// תיעוד תגובה
+await logGeneralActivity('reply_posted', {
+    forumId: forumId,
+    forumTitle: selectedForum?.title || '',
+    contentLength: replyContent.length
+});
                     setReplyContent('');
                     await loadForumReplies(forumId);
                     await loadForums();
