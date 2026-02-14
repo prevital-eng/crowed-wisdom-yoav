@@ -2289,6 +2289,20 @@ await logGeneralActivity('reply_posted', {
                                                             🗑️ מחק
                                                         </button>
                                                     )}
+                                                 {reply.authorPhone !== currentUser?.phone && (
+    <button
+        onClick={() => {
+            const reason = prompt('אנא ציין את הסיבה לדיווח:\n\n1. שפה פוגענית\n2. תוכן לא הולם\n3. ספאם\n4. אחר');
+            if (reason && reason.trim()) {
+                flagContent('reply', reply.id, reply.authorName, reason);
+            }
+        }}
+        className="text-xs text-red-500 hover:text-red-700 transition px-2 py-1 rounded"
+        title="דווח על תוכן בעייתי"
+    >
+        🚩 דווח
+    </button>
+)}   
                                                 </div>
                                                 <p className="text-slate-700 leading-relaxed whitespace-pre-wrap">{reply.content}</p>
                                             </div>
